@@ -4,6 +4,7 @@ var mustache = require('mustache');
 
  
 http.createServer(function(request, response){
+	response.setHeader("Content-Type","text/html");
 	if(request.url == '/MobaResult2.html') {
 		data = fs.readFileSync(__dirname + '\\1.txt', 'utf8');
 		var view = {
