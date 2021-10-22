@@ -2,12 +2,16 @@ let colorButtons = document.querySelectorAll('.colorButton');
 
 for(let colorButton of colorButtons) {
     colorButton.onclick = function () {
-        let parent = colorButton.parentElement;
-        if (parent.classList.contains('interest')) {
-            parent.classList.remove('interest');
-        } else {
-         parent.classList.add('interest');
-        }
+        fetch('./Score').then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			var cells = colorButton
+				.parentElement
+				.getElementsByClassName('score');
+			cells[0].textContent = data["Lions"];
+			cells[1].textContent = data["Team Empire"];
+		});
     };
 }
 
